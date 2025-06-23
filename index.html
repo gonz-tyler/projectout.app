@@ -16,6 +16,15 @@
   </head>
 
   <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+	<!-- Background Gradient + Blobs -->
+	<div class="fixed inset-0 -z-10 overflow-hidden">
+		<div class="absolute inset-0 bg-gradient-to-br from-sky-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"></div>
+
+		<!-- Blurred gradient blobs -->
+		<div class="absolute top-[-10%] left-[-10%] w-[300px] h-[300px] bg-sky-300 dark:bg-sky-700 opacity-30 blur-3xl rounded-full"></div>
+		<div class="absolute top-[30%] right-[-15%] w-[350px] h-[350px] bg-purple-300 dark:bg-purple-600 opacity-20 blur-2xl rounded-full"></div>
+		<div class="absolute bottom-[-10%] left-[20%] w-[250px] h-[250px] bg-pink-300 dark:bg-pink-600 opacity-30 blur-2xl rounded-full"></div>
+	</div>
 
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md">
@@ -62,7 +71,7 @@
     </header>
 
 	<!-- Hero -->
-	<section class="py-24 text-center bg-gradient-to-br from-sky-50 dark:from-gray-800 to-white dark:to-gray-900" >
+	<section class="relative z-10 py-24 text-center" >
 		<div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
 			<!-- Left: Title & Description -->
 			<div class="md:w-1/2 text-center md:text-left" data-aos="fade-right">
@@ -78,65 +87,83 @@
 	</section>
 
     <!-- Suite Overview -->
-	<section id="suite" class="py-20 bg-white dark:bg-gray-900">
-		<div class="container mx-auto px-6 text-center">
-			<h3 class="text-3xl font-bold mb-6">Your Personal Improvement Toolkit</h3>
-			<p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-12">All-in-one access to simple, effective tools designed to help you stay on track in every area of your life.</p>
+	<section id="suite" class="relative z-10 py-24">
+		<div class="container mx-auto px-4">
+			<div class="max-w-5xl mx-auto rounded-2xl bg-white/90 dark:bg-gray-900/90 shadow-xl p-10 md:p-16" data-aos="fade-up">
+			<h3 class="text-3xl font-bold mb-6 text-center">Your Personal Improvement Toolkit</h3>
+			<p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-12 text-center">
+				All-in-one access to simple, effective tools designed to help you stay on track in every area of your life.
+			</p>
 			<div class="grid md:grid-cols-3 gap-8">
 				<!-- Habit Tracker Card -->
 				<div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow group cursor-pointer transition" data-aos="zoom-in">
-					<div class="relative flex justify-center items-center mb-4">
-						<!-- Spinning diagonal square (background) -->
-						<div class="absolute inset-0 flex justify-center items-center">
-							<div class="w-16 h-16 bg-sky-200 dark:bg-sky-900 rounded-lg transform rotate-45 transition-transform duration-500 group-hover:-rotate-12"></div>
-						</div>
-						<!-- Foreground square with icon -->
-						<div class="relative w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex justify-center items-center shadow-lg z-10 transition-transform duration-500 group-hover:rotate-12">
-							<!-- Ticked circle icon (SVG) -->
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-todo-icon lucide-list-todo"><rect x="3" y="5" width="6" height="6" rx="1"/><path d="m3 17 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>
-						</div>
+				<!-- Icon Block -->
+				<div class="relative flex justify-center items-center mb-4">
+					<div class="absolute inset-0 flex justify-center items-center">
+					<div class="w-16 h-16 bg-sky-200 dark:bg-sky-900 rounded-lg transform rotate-45 transition-transform duration-500 group-hover:-rotate-12"></div>
 					</div>
-					<h4 class="text-xl font-semibold mb-2">Habit Tracker</h4>
-					<p class="text-sm text-gray-600 dark:text-gray-300">Build consistency. Track and reinforce your daily habits with clarity.</p>
+					<div class="relative w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex justify-center items-center shadow-lg z-10 transition-transform duration-500 group-hover:rotate-12">
+					<!-- Icon SVG -->
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+						stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-todo">
+						<rect x="3" y="5" width="6" height="6" rx="1" />
+						<path d="m3 17 2 2 4-4" />
+						<path d="M13 6h8" />
+						<path d="M13 12h8" />
+						<path d="M13 18h8" />
+					</svg>
+					</div>
 				</div>
+				<h4 class="text-xl font-semibold mb-2">Habit Tracker</h4>
+				<p class="text-sm text-gray-600 dark:text-gray-300">Build consistency. Track and reinforce your daily habits with clarity.</p>
+				</div>
+
 				<!-- Fitness Tracker Card -->
 				<div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow group cursor-pointer transition" data-aos="zoom-in" data-aos-delay="100">
-					<div class="relative flex justify-center items-center mb-4">
-						<!-- Spinning diagonal square (background) -->
-						<div class="absolute inset-0 flex justify-center items-center">
-							<div class="w-16 h-16 bg-sky-200 dark:bg-sky-900 rounded-lg transform rotate-45 transition-transform duration-500 group-hover:-rotate-12"></div>
-						</div>
-						<!-- Foreground square with icon -->
-						<div class="relative w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex justify-center items-center shadow-lg z-10 transition-transform duration-500 group-hover:rotate-12">
-							<!-- Ticked circle icon (SVG) -->
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dumbbell-icon lucide-dumbbell"><path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z"/><path d="m2.5 21.5 1.4-1.4"/><path d="m20.1 3.9 1.4-1.4"/><path d="M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z"/><path d="m9.6 14.4 4.8-4.8"/></svg>
-						</div>
+				<div class="relative flex justify-center items-center mb-4">
+					<div class="absolute inset-0 flex justify-center items-center">
+					<div class="w-16 h-16 bg-sky-200 dark:bg-sky-900 rounded-lg transform rotate-45 transition-transform duration-500 group-hover:-rotate-12"></div>
 					</div>
-					<h4 class="text-xl font-semibold mb-2">Fitness Tracker</h4>
-					<p class="text-sm text-gray-600 dark:text-gray-300">Monitor workouts, progress, and goals with a streamlined, personal tracker.</p>
+					<div class="relative w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex justify-center items-center shadow-lg z-10 transition-transform duration-500 group-hover:rotate-12">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dumbbell-icon lucide-dumbbell">
+						<path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z"/>
+						<path d="m2.5 21.5 1.4-1.4"/>
+						<path d="m20.1 3.9 1.4-1.4"/>
+						<path d="M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z"/>
+						<path d="m9.6 14.4 4.8-4.8"/>
+					</svg>
+					</div>
 				</div>
+				<h4 class="text-xl font-semibold mb-2">Fitness Tracker</h4>
+				<p class="text-sm text-gray-600 dark:text-gray-300">Monitor workouts, progress, and goals with a streamlined, personal tracker.</p>
+				</div>
+
 				<!-- More Coming Card -->
 				<div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow group cursor-pointer transition" data-aos="zoom-in" data-aos-delay="200">
-					<div class="relative flex justify-center items-center mb-4">
-						<!-- Spinning diagonal square (background) -->
-						<div class="absolute inset-0 flex justify-center items-center">
-							<div class="w-16 h-16 bg-sky-200 dark:bg-sky-900 rounded-lg transform rotate-45 transition-transform duration-500 group-hover:-rotate-12"></div>
-						</div>
-						<!-- Foreground square with icon -->
-						<div class="relative w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex justify-center items-center shadow-lg z-10 transition-transform duration-500 group-hover:rotate-12">
-							<!-- Ticked circle icon (SVG) -->
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus-icon lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-						</div>
+				<div class="relative flex justify-center items-center mb-4">
+					<div class="absolute inset-0 flex justify-center items-center">
+					<div class="w-16 h-16 bg-sky-200 dark:bg-sky-900 rounded-lg transform rotate-45 transition-transform duration-500 group-hover:-rotate-12"></div>
 					</div>
-					<h4 class="text-xl font-semibold mb-2">+ More Coming</h4>
-					<p class="text-sm text-gray-600 dark:text-gray-300">New tools are in the works—journaling, mood tracking, and more.</p>
+					<div class="relative w-16 h-16 bg-white dark:bg-gray-900 rounded-lg flex justify-center items-center shadow-lg z-10 transition-transform duration-500 group-hover:rotate-12">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+						stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus">
+						<circle cx="12" cy="12" r="10" />
+						<path d="M8 12h8" />
+						<path d="M12 8v8" />
+					</svg>
+					</div>
+				</div>
+				<h4 class="text-xl font-semibold mb-2">+ More Coming</h4>
+				<p class="text-sm text-gray-600 dark:text-gray-300">New tools are in the works—journaling, mood tracking, and more.</p>
 				</div>
 			</div>
+			</div>
 		</div>
-	</section>
+		</section>
+
 
     <!-- Individual App Highlights -->
-    <section id="apps" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="apps" class="relative z-10 py-20">
       <div class="container mx-auto px-6">
         <h3 class="text-3xl font-bold text-center mb-12">Each App, Purpose-Built</h3>
         <div class="space-y-16">
@@ -168,13 +195,26 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="py-24 text-center bg-sky-600 dark:bg-sky-700 text-white">
-      <div class="container mx-auto px-6">
-        <h3 class="text-3xl md:text-4xl font-bold mb-4">Ready to Level Up?</h3>
-        <p class="max-w-xl mx-auto mb-8">Start using Project Out for free. No clutter, no distractions—just better habits and better health.</p>
-        <a href="#" class="bg-white text-sky-600 font-semibold px-6 py-3 rounded-full text-sm hover:bg-gray-100">Start Now</a>
-      </div>
-    </section>
+	<section class="relative z-10 py-24 text-center bg-sky-600 dark:bg-sky-700 text-white overflow-hidden">
+	  <!-- Cosmic Gradient Background -->
+	  <div class="absolute inset-0 -z-10">
+		<div class="w-full h-full bg-gradient-to-br from-indigo-500 via-sky-400 to-fuchsia-500 opacity-80"></div>
+		<!-- Blobs / Stars -->
+		<div class="absolute top-10 left-10 w-40 h-40 bg-fuchsia-400 opacity-30 blur-3xl rounded-full"></div>
+		<div class="absolute bottom-10 right-20 w-56 h-56 bg-indigo-300 opacity-20 blur-2xl rounded-full"></div>
+		<div class="absolute top-1/2 left-1/3 w-24 h-24 bg-white opacity-10 blur-2xl rounded-full"></div>
+		<!-- "Stars" -->
+		<div class="absolute top-12 left-1/2 w-1 h-1 bg-white rounded-full opacity-70"></div>
+		<div class="absolute bottom-16 right-1/3 w-1.5 h-1.5 bg-white rounded-full opacity-60"></div>
+		<div class="absolute top-1/3 right-1/4 w-0.5 h-0.5 bg-white rounded-full opacity-80"></div>
+		<div class="absolute bottom-1/4 left-1/4 w-1 h-1 bg-white rounded-full opacity-50"></div>
+	  </div>
+	  <div class="container mx-auto px-6 relative z-10">
+		<h3 class="text-3xl md:text-4xl font-bold mb-4">Ready to Level Up?</h3>
+		<p class="max-w-xl mx-auto mb-8">Start using Project Out for free. No clutter, no distractions—just better habits and better health.</p>
+		<a href="#" class="bg-white text-sky-600 font-semibold px-6 py-3 rounded-full text-sm hover:bg-gray-100">Start Now</a>
+	  </div>
+	</section>
 
     <!-- Contact / Footer -->
     <footer id="contact" class="py-12 bg-white dark:bg-gray-900 text-center text-sm text-gray-500 dark:text-gray-400">
