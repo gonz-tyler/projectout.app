@@ -1,1 +1,121 @@
-testing tos
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Terms of Service | Blackout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .cosmic-gradient {
+            background: linear-gradient(90deg, #7f5af0 0%, #2cb67d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .cosmic-border {
+            border-image: linear-gradient(90deg, #7f5af0 0%, #2cb67d 100%);
+            border-image-slice: 1;
+        }
+        .star-bg {
+            background: radial-gradient(ellipse at 20% 30%, #fff3 0 2px, transparent 40%), 
+                        radial-gradient(ellipse at 80% 70%, #fff2 0 1.5px, transparent 40%), 
+                        radial-gradient(ellipse at 60% 20%, #fff4 0 1.5px, transparent 40%), 
+                        radial-gradient(ellipse at 40% 80%, #fff1 0 2px, transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen font-sans star-bg relative overflow-x-hidden">
+    <!-- Cosmic Nebula SVG Top -->
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -z-10 opacity-60 pointer-events-none">
+        <svg width="600" height="200" viewBox="0 0 600 200" fill="none">
+            <ellipse cx="300" cy="100" rx="280" ry="80" fill="url(#paint0_radial)" />
+            <defs>
+                <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientTransform="translate(300 100) scale(280 80)" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#7f5af0" stop-opacity="0.6"/>
+                    <stop offset="1" stop-color="#2cb67d" stop-opacity="0"/>
+                </radialGradient>
+            </defs>
+        </svg>
+    </div>
+    <div class="max-w-2xl mx-auto py-12 px-6 relative z-10">
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl font-extrabold mb-2 cosmic-gradient drop-shadow-lg">Terms of Service</h1>
+            <p class="text-lg text-gray-400 cosmic-gradient font-semibold">Effective Date: June 2025</p>
+            <p class="mt-2 text-gray-400">Blackout - Habit Tracking Journal App</p>
+        </header>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">1. Acceptance of Terms</h2>
+            <p class="text-gray-300">
+                By accessing or using <span class="font-bold cosmic-gradient">Blackout</span>, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the app.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">2. Use of the App</h2>
+            <ul class="list-disc list-inside text-gray-300 space-y-1">
+                <li>You may use Blackout for personal, non-commercial purposes only.</li>
+                <li>You agree not to misuse the app or attempt to access it using a method other than the interface provided.</li>
+                <li>You are responsible for maintaining the security of your device and your data.</li>
+            </ul>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">3. User Content</h2>
+            <p class="text-gray-300">
+                Your habit data and journal entries are stored locally on your device. You retain all rights to your content. Blackout does not access, store, or share your personal entries.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">4. Privacy</h2>
+            <p class="text-gray-300">
+                Please review our <a href="/blackout/privacy-policy/" class="text-blue-400 underline cosmic-gradient">Privacy Policy</a> to understand how we handle your information.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">5. Modifications to the Service</h2>
+            <p class="text-gray-300">
+                We reserve the right to modify or discontinue Blackout at any time, with or without notice.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">6. Disclaimer and Limitation of Liability</h2>
+            <p class="text-gray-300">
+                Blackout is provided "as is" without warranties of any kind. We are not liable for any damages or losses resulting from your use of the app.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">7. Contact Us</h2>
+            <p class="text-gray-300">
+                If you have any questions about these Terms of Service, please contact us at <a href="mailto:support@projectout.app" class="text-blue-400 underline cosmic-gradient">support@projectout.app</a>.
+            </p>
+        </section>
+
+        <!-- Cosmic Planet SVG Bottom -->
+        <div class="flex justify-center mt-16">
+            <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                <ellipse cx="60" cy="30" rx="55" ry="20" fill="url(#planetGradient)" />
+                <ellipse cx="60" cy="30" rx="45" ry="15" fill="#fff2" />
+                <defs>
+                    <radialGradient id="planetGradient" cx="0" cy="0" r="1" gradientTransform="translate(60 30) scale(55 20)" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#7f5af0" stop-opacity="0.7"/>
+                        <stop offset="1" stop-color="#2cb67d" stop-opacity="0.3"/>
+                    </radialGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <footer class="mt-12 text-center text-gray-500 text-sm">
+            &copy; <span id="year"></span> <span class="cosmic-gradient font-semibold">Blackout</span>. All rights reserved.
+            <script>
+                document.getElementById('year').textContent = new Date().getFullYear();
+            </script>
+        </footer>
+    </div>
+</body>
+</html>

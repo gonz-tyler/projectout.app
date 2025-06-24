@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Blackout - Cosmic Habit Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .planet {
+            background: radial-gradient(circle at 40% 40%, #86a8e7 60%, #1b2735 100%);
+            box-shadow: 0 0 60px 10px #86a8e7, 0 0 0 8px #222 inset;
+            animation: float 4s ease-in-out infinite;
+        }
+        .planet::before {
+            content: '';
+            position: absolute;
+            top: 30px; left: -30px;
+            width: 180px; height: 30px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.15);
+            border-top: none;
+            border-bottom: none;
+            transform: rotate(-15deg);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-20px);}
+        }
+    </style>
+</head>
+<body class="min-h-screen m-0 overflow-x-hidden bg-gradient-to-b from-[#1b2735] to-[#090a0f] text-white">
+    <canvas class="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none stars"></canvas>
+    <div class="relative z-10 min-h-screen flex flex-col items-center justify-center text-center">
+        <div class="planet relative mx-auto my-8 w-32 h-32 rounded-full sm:w-20 sm:h-20"></div>
+        <h1 class="text-5xl sm:text-2xl font-bold tracking-widest mb-2 bg-gradient-to-r from-white via-[#7f7fd5] to-[#86a8e7] bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Blackout
+        </h1>
+        <div class="subtitle text-lg text-[#b0c4de] mb-8">
+            Track your habits among the stars.<br>Embrace the cosmic blackout and shine brighter every day.
+        </div>
+        <a href="#" class="cta-btn inline-block bg-gradient-to-r from-[#7f7fd5] via-[#86a8e7] to-[#91eac9] text-[#090a0f] font-bold font-orbitron rounded-full px-10 py-4 text-lg shadow-lg transition hover:from-[#91eac9] hover:via-[#86a8e7] hover:to-[#7f7fd5] hover:-translate-y-0.5 hover:scale-105">
+            Get Started
+        </a>
+    </div>
+    <script>
+        // Starfield animation
+        const canvas = document.querySelector('.stars');
+        const ctx = canvas.getContext('2d');
+        let w, h, stars;
+        function resize() {
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+            stars = Array.from({length: 120}, () => ({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: Math.random() * 1.2 + 0.2,
+                d: Math.random() * 0.5 + 0.2
+            }));
+        }
+        function drawStars() {
+            ctx.clearRect(0, 0, w, h);
+            ctx.save();
+            ctx.shadowColor = "#fff";
+            ctx.shadowBlur = 8;
+            for (let s of stars) {
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+                ctx.fillStyle = "#fff";
+                ctx.globalAlpha = Math.random() * 0.5 + 0.5;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                s.y += s.d;
+                if (s.y > h) s.y = 0;
+            }
+            ctx.restore();
+            requestAnimationFrame(drawStars);
+        }
+        window.addEventListener('resize', resize);
+        resize();
+        drawStars();
+    </script>
+</body>
+</html>

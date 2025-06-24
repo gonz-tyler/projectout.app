@@ -1,1 +1,100 @@
-testing 123
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy Policy | Blackout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .cosmic-gradient {
+            background: linear-gradient(90deg, #7f5af0 0%, #2cb67d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .cosmic-border {
+            border-image: linear-gradient(90deg, #7f5af0 0%, #2cb67d 50%);
+            border-image-slice: 1;
+        }
+        .star-bg {
+            background: radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, 0.116) 0 2px, transparent 20%), 
+                        radial-gradient(ellipse at 80% 70%, rgba(255, 255, 255, 0.116) 0 1.5px, transparent 20%), 
+                        radial-gradient(ellipse at 60% 20%, rgba(255, 255, 255, 0.116) 0 1.5px, transparent 20%), 
+                        radial-gradient(ellipse at 40% 80%, rgba(255, 255, 255, 0.116) 0 2px, transparent 20%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen font-sans star-bg relative overflow-x-hidden">
+    <div class="max-w-2xl mx-auto py-12 px-6 relative z-10">
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl font-extrabold mb-2 cosmic-gradient drop-shadow-lg">Privacy Policy</h1>
+            <p class="text-lg text-gray-400 cosmic-gradient font-semibold">Effective Date: June 2025</p>
+            <p class="mt-2 text-gray-400">Blackout - Habit Tracking Journal App</p>
+            <a href="/blackout/index.html" class="absolute left-6 top-6 flex items-center group">
+                <svg class="w-7 h-7 text-gray-300 group-hover:text-white transition" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                </svg>
+                <span class="sr-only">Back to Blackout Home</span>
+            </a>
+        </header>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">1. Introduction</h2>
+            <p class="text-gray-300">
+                Welcome to <span class="font-bold cosmic-gradient">Blackout</span>. Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our habit tracking journal app.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">2. Information We Collect</h2>
+            <ul class="list-disc list-inside text-gray-300 space-y-1">
+                <li><span class="font-semibold cosmic-gradient">Personal Data:</span> We do <span class="underline cosmic-gradient font-bold">not</span> require personal information to use Blackout.</li>
+                <li><span class="font-semibold cosmic-gradient">Usage Data:</span> We may collect anonymized data about app usage to improve features and performance.</li>
+                <li><span class="font-semibold cosmic-gradient">Journal Entries:</span> Your habit data and journal entries are stored locally on your device and are never shared with us.</li>
+            </ul>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">3. How We Use Your Information</h2>
+            <p class="text-gray-300">
+                We use <span class="font-semibold cosmic-gradient">anonymized usage data</span> solely to enhance your experience and improve Blackout. Your personal habits and journal entries remain private and are never transmitted to our servers.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">4. Data Security</h2>
+            <p class="text-gray-300">
+                We prioritize your privacy. All your data is stored securely on your device. We recommend enabling device-level security (such as a passcode or biometric lock) for additional protection.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">5. Third-Party Services</h2>
+            <p class="text-gray-300">
+                Blackout does not share your data with third parties. We do not use third-party analytics or advertising services.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">6. Changes to This Policy</h2>
+            <p class="text-gray-300">
+                We may update this Privacy Policy from time to time. We will notify you of any changes by updating the effective date at the top of this page.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold mb-3 cosmic-gradient">7. Contact Us</h2>
+            <p class="text-gray-300">
+                If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@projectout.app" class="text-blue-400 underline cosmic-gradient">support@projectout.app</a>.
+            </p>
+        </section>
+        <footer class="mt-12 text-center text-gray-500 text-sm">
+            &copy; <span id="year"></span> <span class="cosmic-gradient font-semibold">Blackout</span>. All rights reserved.
+            <script>
+                document.getElementById('year').textContent = new Date().getFullYear();
+            </script>
+        </footer>
+    </div>
+</body>
+</html>
