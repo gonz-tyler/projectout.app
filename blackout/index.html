@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Blackout - Cosmic Habit Tracker</title>
     <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <style>
         body {
             font-family: 'Roboto', Arial, sans-serif;
@@ -18,6 +23,14 @@
             box-shadow: 0 0 60px 10px #86a8e7, 0 0 0 8px #222 inset;
             animation: float 4s ease-in-out infinite;
         }
+        .dark .planet {
+            background: radial-gradient(circle at 40% 40%, #86a8e7 60%, #1b2735 100%);
+            box-shadow: 0 0 60px 10px #86a8e7, 0 0 0 8px #222 inset;
+        }
+        .light .planet {
+            background: radial-gradient(circle at 40% 40%, #7f7fd5 60%, #f0f4ff 100%);
+            box-shadow: 0 0 60px 10px rgba(127, 127, 213, 0.5), 0 0 0 8px #e2e8f0 inset;
+        }
         .planet::before {
             content: '';
             position: absolute;
@@ -29,26 +42,189 @@
             border-bottom: none;
             transform: rotate(-15deg);
         }
+        .light .planet::before {
+            border-color: rgba(0,0,0,0.1);
+        }
         @keyframes float {
             0%, 100% { transform: translateY(0);}
             50% { transform: translateY(-20px);}
         }
+        
+        .stars {
+            display: block;
+        }
+
+        .stars::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 100px;
+          width: 100%;
+          background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+          pointer-events: none;
+          z-index: 20;
+        }
+
     </style>
 </head>
-<body class="min-h-screen m-0 overflow-x-hidden bg-gradient-to-b from-[#1b2735] to-[#090a0f] text-white">
+<!-- <body class="m-0 overflow-x-hidden bg-gradient-to-b from-[#090a0f] to-[#1b2735] text-white"> -->
+<!-- <body class="min-h-screen m-0 overflow-x-hidden bg-[#1b2735] text-white"> -->
+<body class="min-h-screen m-0 overflow-x-hidden bg-[#090a0f] text-white">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white bg-opacity-90 dark:bg-gray-900 shadow-md transition-all duration-500">
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html"><h1 class="text-xl font-bold text-sky-600 dark:text-sky-400 font-[Orbitron]">Project Out</h1></a>
+        <nav class="hidden md:flex space-x-6 text-sm font-medium">
+          <a href="#suite" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-400">Suite</a>
+          <a href="#apps" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-400">Apps</a>
+          <a href="#contact" class="text-gray-600 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-400">Contact</a>
+        </nav>
+        <div class="flex items-center space-x-4 text-black dark:text-white">
+          <button id="theme-toggle" class="text-xl group" aria-label="Toggle dark mode">
+          <span id="theme-icon">
+            <!-- Moon SVG (for light mode) -->
+            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon hidden"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            <!-- Sun SVG (for dark mode) -->
+            <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          </span>
+          </button>
+          <script>
+            // Theme toggle logic with sessionStorage persistence
+			const btn = document.getElementById('theme-toggle');
+			const moonIcon = document.getElementById('moon-icon');
+			const sunIcon = document.getElementById('sun-icon');
+
+			function initTheme() {
+			const savedTheme = sessionStorage.getItem('theme');
+			const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			
+			const shouldUseDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+			
+			if (shouldUseDark) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+			}
+
+			function updateIcon() {
+			if (document.documentElement.classList.contains('dark')) {
+				moonIcon.classList.add('hidden');
+				sunIcon.classList.remove('hidden');
+			} else {
+				sunIcon.classList.add('hidden');
+				moonIcon.classList.remove('hidden');
+			}
+			}
+
+			function toggleTheme() {
+			const isDark = document.documentElement.classList.contains('dark');
+			
+			if (isDark) {
+				document.documentElement.classList.remove('dark');
+				sessionStorage.setItem('theme', 'light');
+			} else {
+				document.documentElement.classList.add('dark');
+				sessionStorage.setItem('theme', 'dark');
+			}
+			
+			updateIcon();
+			}
+
+			// Initialize theme on page load
+			initTheme();
+			updateIcon();
+
+			btn.addEventListener('click', toggleTheme);
+          </script>
+          <a href="#" class="bg-sky-600 hover:bg-sky-700 text-white text-sm px-4 py-2 rounded-full">Get Started</a>
+        </div>
+      </div>
+    </header>
     <canvas class="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none stars"></canvas>
     <div class="relative z-10 min-h-screen flex flex-col items-center justify-center text-center">
-        <div class="planet relative mx-auto my-8 w-32 h-32 rounded-full sm:w-20 sm:h-20"></div>
-        <h1 class="text-5xl sm:text-2xl font-bold tracking-widest mb-2 bg-gradient-to-r from-white via-[#7f7fd5] to-[#86a8e7] bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        <div class="planet relative mx-auto my-8 w-32 h-32 rounded-full"></div>
+        <h1 class="text-5xl font-bold tracking-widest mb-2 bg-gradient-to-r from-white via-[#7f7fd5] to-[#86a8e7] bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             Blackout
         </h1>
         <div class="subtitle text-lg text-[#b0c4de] mb-8">
             Track your habits among the stars.<br>Embrace the cosmic blackout and shine brighter every day.
         </div>
-        <a href="#" class="cta-btn inline-block bg-gradient-to-r from-[#7f7fd5] via-[#86a8e7] to-[#91eac9] text-[#090a0f] font-bold font-orbitron rounded-full px-10 py-4 text-lg shadow-lg transition hover:from-[#91eac9] hover:via-[#86a8e7] hover:to-[#7f7fd5] hover:-translate-y-0.5 hover:scale-105">
+        <a href="#information" class="cta-btn inline-block bg-gradient-to-r from-[#7f7fd5] via-[#86a8e7] to-[#91eac9] text-white font-bold font-orbitron rounded-full px-10 py-4 text-lg shadow-lg transition hover:from-[#91eac9] hover:via-[#86a8e7] hover:to-[#7f7fd5] hover:-translate-y-0.5 hover:scale-105">
             Get Started
         </a>
     </div>
+
+          <!-- New adaptive section -->
+    <section id="information" class="relative z-10 py-20 transition-colors duration-500 
+  bg-gradient-to-b 
+  from-[#090a0f] via-[#203a43] to-[#b4541a] 
+  dark:from-[#090a0f] dark:via-[#1b2735] dark:to-[#203a43]">
+      <div class="absolute top-0 left-0 w-full h-32 z-10"></div>
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6 text-white">Cosmic Habit Tracking</h2>
+                <p class="text-lg mb-8 text-gray-300">
+                    Blackout helps you build lasting habits with celestial inspiration. Track your progress daily 
+                    as you journey through the cosmos of self-improvement. Each habit completed adds a new star 
+                    to your personal galaxy.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="p-6 rounded-lg bg-white/60 dark:bg-gray-800/80 backdrop-blur">
+
+                        <div class="text-4xl mb-4 text-sky-600 dark:text-sky-400">🌌</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Stellar Tracking</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Visualize your habits as constellations that grow brighter with each completion.</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-white/60 dark:bg-gray-800/80 backdrop-blur">
+
+                        <div class="text-4xl mb-4 text-sky-600 dark:text-sky-400">🪐</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Planetary Goals</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Set and achieve milestones that propel you forward in your cosmic journey.</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-white/60 dark:bg-gray-800/80 backdrop-blur">
+
+                        <div class="text-4xl mb-4 text-sky-600 dark:text-sky-400">🚀</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Rocket Boost</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Get motivational boosts when you need them most to keep your momentum going.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New information section -->
+    <section class="relative z-10 py-20 bg-gradient-to-b from-gray-900 to-[#090a0f]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-12 text-center text-white">How It Works</h2>
+                <div class="space-y-12">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-shrink-0 w-32 h-32 rounded-full bg-gradient-to-r from-[#7f7fd5] to-[#86a8e7] flex items-center justify-center text-white text-4xl">1</div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-3 text-white">Create Your Cosmic Profile</h3>
+                            <p class="text-gray-300">Set up your account and choose the habits you want to track. Customize your cosmic theme and set your goals.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-shrink-0 w-32 h-32 rounded-full bg-gradient-to-r from-[#86a8e7] to-[#91eac9] flex items-center justify-center text-white text-4xl">2</div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-3 text-white">Track Daily Habits</h3>
+                            <p class="text-gray-300">Log your habits each day. Watch as each completed habit adds a new star to your personal galaxy.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-shrink-0 w-32 h-32 rounded-full bg-gradient-to-r from-[#91eac9] to-[#7f7fd5] flex items-center justify-center text-white text-4xl">3</div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-3 text-white">Witness Your Galaxy Grow</h3>
+                            <p class="text-gray-300">As you maintain your streak, your galaxy becomes more vibrant and complex, reflecting your progress.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         // Starfield animation
         const canvas = document.querySelector('.stars');

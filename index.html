@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Project Out – Personal Growth Suite with Habit and Fitness Tracker apps. Clean, responsive, and productivity-focused.">
+	<meta property="og:title" content="Project Out – Personal Growth Suite">
+	<meta property="og:description" content="A clean, modern suite of personal growth tools to build better habits and track fitness.">
+	<meta property="og:image" content="URL_TO_YOUR_PREVIEW_IMAGE">
+	<meta property="og:type" content="website">
     <title>Project Out – Personal Growth Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,6 +17,9 @@
       }
     </script>
 	<link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
+	<style>
+		
+	</style>
 
   </head>
 
@@ -29,7 +37,7 @@
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 class="text-xl font-bold text-sky-600 dark:text-sky-400">Project Out</h1>
+		<h1 class="text-xl font-bold text-sky-600 dark:text-sky-400 font-[Orbitron]">Project Out</h1>
         <nav class="hidden md:flex space-x-6 text-sm font-medium">
           <a href="#suite" class="hover:text-sky-600 dark:hover:text-sky-400">Suite</a>
           <a href="#apps" class="hover:text-sky-600 dark:hover:text-sky-400">Apps</a>
@@ -45,25 +53,53 @@
 			</span>
 		  </button>
 		  <script>
-			// Theme toggle logic with SVG icons
+			// Theme toggle logic with sessionStorage persistence
 			const btn = document.getElementById('theme-toggle');
 			const moonIcon = document.getElementById('moon-icon');
 			const sunIcon = document.getElementById('sun-icon');
-			function updateIcon() {
-			  if (document.documentElement.classList.contains('dark')) {
-			moonIcon.classList.add('hidden');
-			sunIcon.classList.remove('hidden');
-			  } else {
-			sunIcon.classList.add('hidden');
-			moonIcon.classList.remove('hidden');
-			  }
+
+			function initTheme() {
+			const savedTheme = sessionStorage.getItem('theme');
+			const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			
+			const shouldUseDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+			
+			if (shouldUseDark) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
 			}
-			btn.addEventListener('click', () => {
-			  document.documentElement.classList.toggle('dark');
-			  updateIcon();
-			});
-			// Set icon on load
+			}
+
+			function updateIcon() {
+			if (document.documentElement.classList.contains('dark')) {
+				moonIcon.classList.add('hidden');
+				sunIcon.classList.remove('hidden');
+			} else {
+				sunIcon.classList.add('hidden');
+				moonIcon.classList.remove('hidden');
+			}
+			}
+
+			function toggleTheme() {
+			const isDark = document.documentElement.classList.contains('dark');
+			
+			if (isDark) {
+				document.documentElement.classList.remove('dark');
+				sessionStorage.setItem('theme', 'light');
+			} else {
+				document.documentElement.classList.add('dark');
+				sessionStorage.setItem('theme', 'dark');
+			}
+			
 			updateIcon();
+			}
+
+			// Initialize theme on page load
+			initTheme();
+			updateIcon();
+
+			btn.addEventListener('click', toggleTheme);
 		  </script>
 		  <a href="#" class="bg-sky-600 hover:bg-sky-700 text-white text-sm px-4 py-2 rounded-full">Get Started</a>
 		</div>
@@ -87,9 +123,10 @@
 				<a href="#" class="bg-sky-600 text-white px-6 py-3 rounded-full text-sm hover:bg-sky-700">Explore the Suite</a>
 			</div>
 			<!-- Right: Image -->
-			<div class="md:w-1/2 mt-10 md:mt-0 flex justify-center" data-aos="fade-left">
+			<div class="md:w-1/2 mt-10 md:mt-0 flex justify-center z-10" data-aos="fade-left">
 				<img src="images/fulls/hero-light.png" alt="App preview" class="rounded-xl w-full max-w-md" />
 			</div>
+
 		</div>
 	</section>
 
@@ -121,7 +158,7 @@
 					</svg>
 					</div>
 				</div>
-				<h4 class="text-xl font-semibold mb-2">Habit Tracker</h4>
+				<h4 class="text-xl font-semibold mb-2">Blackout - Habit Tracker</h4>
 				<p class="text-sm text-gray-600 dark:text-gray-300">Build consistency. Track and reinforce your daily habits with clarity.</p>
 				</div>
 
@@ -141,7 +178,7 @@
 					</svg>
 					</div>
 				</div>
-				<h4 class="text-xl font-semibold mb-2">Fitness Tracker</h4>
+				<h4 class="text-xl font-semibold mb-2">Burnout - Fitness Tracker</h4>
 				<p class="text-sm text-gray-600 dark:text-gray-300">Monitor workouts, progress, and goals with a streamlined, personal tracker.</p>
 				</div>
 
@@ -161,7 +198,7 @@
 					</div>
 				</div>
 				<h4 class="text-xl font-semibold mb-2">+ More Coming</h4>
-				<p class="text-sm text-gray-600 dark:text-gray-300">New tools are in the works—journaling, mood tracking, and more.</p>
+				<p class="text-sm text-gray-600 dark:text-gray-300">New tools are in the works — yoga and meditation, and more.</p>
 				</div>
 			</div>
 			</div>
@@ -180,6 +217,12 @@
               <img src="images/fulls/hero-light.png" alt="Habit Tracker" class="rounded-xl" />
             </div>
             <div class="md:w-1/2">
+			  <span class="block text-6xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-black via-[#7f7fd5] to-[#86a8e7] dark:bg-gradient-to-r dark:from-white dark:via-[#7f7fd5] dark:to-[#86a8e7] bg-clip-text text-transparent drop-shadow-lg"
+					style="font-family: 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif; letter-spacing: 0.05em;"
+					data-aos="zoom-in"
+				>
+					BLACKOUT
+				</span>
               <h4 class="text-2xl font-semibold mb-4">Habit Tracker</h4>
               <p class="text-gray-600 dark:text-gray-300 mb-4">Stick to your habits with streaks, reminders, and clean progress tracking. No fluff—just focus.</p>
 			  <a href="blackout/index.html" class="text-sky-600 dark:text-sky-400 font-medium">Learn More →</a>
@@ -189,6 +232,12 @@
           <!-- Fitness Tracker -->
           <div class="flex flex-col-reverse md:flex-row items-center gap-12">
             <div class="md:w-1/2">
+				<span class="block text-6xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 bg-clip-text text-transparent drop-shadow-lg"
+					style="font-family: 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif; letter-spacing: 0.05em; text-shadow: 0 0 4px #fbbf24, 0 0 8px #ffa7a7, 0 0 12px #f59e42;"
+					data-aos="zoom-in"
+				>
+					BURNOUT
+				</span>
               <h4 class="text-2xl font-semibold mb-4">Fitness Tracker</h4>
               <p class="text-gray-600 dark:text-gray-300 mb-4">Track strength, cardio and much more. Tailored for everyday users or fitness enthusiasts alike.</p>
               <a href="burnout/index.html" class="text-sky-600 dark:text-sky-400 font-medium">Learn More →</a>
