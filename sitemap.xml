@@ -9,23 +9,38 @@
 
 <url>
   <loc>https://projectout.app/</loc>
-  <lastmod>2025-06-26T00:52:20+00:00</lastmod>
+  <lastmod>2025-06-26T02:56:05+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://projectout.app/blackout/index.html</loc>
-  <lastmod>2025-06-26T00:52:20+00:00</lastmod>
+  <lastmod>2025-06-26T02:56:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://projectout.app/burnout/index.html</loc>
-  <lastmod>2025-06-26T00:52:20+00:00</lastmod>
+  <lastmod>2025-06-26T02:56:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://projectout.app/index.html</loc>
-  <lastmod>2025-06-26T00:52:20+00:00</lastmod>
+  <lastmod>2025-06-26T02:56:05+00:00</lastmod>
   <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://projectout.app/blackout/privacy-policy/index.html</loc>
+  <lastmod>2025-06-26T02:56:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://projectout.app/blackout/terms-of-service/index.html</loc>
+  <lastmod>2025-06-26T02:56:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://projectout.app/blackout/privacy-policy/</loc>
+  <lastmod>2025-06-26T02:56:05+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 
 
