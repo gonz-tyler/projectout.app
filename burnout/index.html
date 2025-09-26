@@ -124,7 +124,11 @@
     <!-- Hero Section -->
     <canvas class="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none stars"></canvas>
     <div class="relative z-10 min-h-screen flex flex-col items-center justify-center text-center light-stars dark:bg-none">
-        <div class="flame relative mx-auto my-8 w-32 h-32 rounded-full"></div>
+        <div class="flame relative mx-auto my-8 w-32 h-32 rounded-full overflow-hidden" style="box-shadow: 0 0 60px 10px #e7bd86;">
+            <img src="../images/burnout_logo_only.png" alt="Burnout Icon"
+                 class="w-full h-full object-cover rounded-full"
+                 style="object-fit: cover; object-position: center; transform: scale(1.59); image-rendering: auto; image-rendering: smooth;" />
+        </div>
         <h1 class="text-5xl sm:text-2xl font-bold tracking-widest mb-2 bg-gradient-to-r from-gray-900 via-orange-600 to-red-600 dark:from-white dark:via-[#ffb347] dark:to-[#ff5e62] bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             Burnout
         </h1>
